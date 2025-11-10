@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Touch & Click Counter — PWA</title>
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+  <h1>Touch & Click Counter</h1>
+  <div id="count">0</div>
+  <button id="tapBtn">Tap / Click</button>
+  <script>
+    let count = 0;
+    const countEl = document.getElementById('count');
+    document.getElementById('tapBtn').addEventListener('click', () => {
+      count++;
+      countEl.textContent = count;
+    });
+    if('serviceWorker' in navigator){
+      navigator.serviceWorker.register('./sw.js');
+    }
+  </script>
+</body>
+</html>
